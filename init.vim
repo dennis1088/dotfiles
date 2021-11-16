@@ -4,6 +4,9 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" Use the space key as our leader.
+let mapleader = "\<Space>"
+
 " ==========
 " Plugins
 " ==========
@@ -101,3 +104,9 @@ nnoremap <C-P> :FZF<CR>
 
 " Add erb files for html close tag plugin
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.html.erb'
+
+" Split edit your vimrc.
+nmap <leader>vr :sp $MYVIMRC<cr>
+
+" Source (reload) your vimrc.
+nmap <leader>so :source $MYVIMRC<cr>
