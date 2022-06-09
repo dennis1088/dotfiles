@@ -10,7 +10,7 @@ let mapleader = "\<Space>"
 " ==========
 " Plugins
 " ==========
-call plug#begin('~/.vim/plugged')
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Collection of color schemes
 Plug 'rafi/awesome-vim-colorschemes'
@@ -25,7 +25,8 @@ Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-peekaboo'
 
 " Auto expands current split
-Plug 'roman/golden-ratio'
+" Plug 'roman/golden-ratio'
+" Currently causing issue with nvim
 
 " Navigate files in folder
 Plug 'scrooloose/nerdtree'
@@ -61,6 +62,9 @@ Plug 'tpope/vim-rails'
 " Puts buffers on the tabline
 " Plug 'ap/vim-buftabline'
 
+" Grep like source code search tool
+Plug 'mileszs/ack.vim'
+
 call plug#end()
 
 " Set the color scheme
@@ -94,10 +98,11 @@ map <Leader>n :NERDTreeFind<CR> " Leader + n to open NERDTREE
 set smartcase
 
 " Turn off search highlighting by pressing Enter
-nnoremap <CR> :noho
+" nnoremap <CR> :noh
+" Overriding enter when opeining search result from ack quickfix window
 
 " Search for a search patter
-nnoremap <C-F> :Ag<CR>
+nnoremap <C-F> :Ack 
 
 " Search for a file by name using fzf
 nnoremap <C-P> :FZF<CR>
